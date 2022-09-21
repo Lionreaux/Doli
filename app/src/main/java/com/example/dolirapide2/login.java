@@ -38,16 +38,15 @@ public class login{
         String idTxt = id.getText().toString();
 
         EditText mdp = app.findViewById(R.id.ChampMdp);
-        String mdpTxt = id.getText().toString();
+        String mdpTxt = mdp.getText().toString();
 
         TextView status = app.findViewById(R.id.essaie);
         if (urlTxt.equals("oui") && idTxt.equals("admin") && mdpTxt.equals("123456789")) {
             status.setText("Succès");
         }
         else {
-            status.setText(urlTxt);//Erreur : identifiant non valide
+            status.setText("Erreur : identifiant non valide");
         }
-
     }
 
 }

@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 public class login{
     private AppCompatActivity app;
     public login(AppCompatActivity app) {
@@ -27,6 +29,8 @@ public class login{
             @Override
             public void onClick(View view) {
                 check();
+                api api = new api();
+                api.start();
             }
         });
     }

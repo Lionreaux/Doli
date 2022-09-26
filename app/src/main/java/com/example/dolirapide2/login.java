@@ -12,7 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 
 public class login{
+    private static String mdpTxt;
     private AppCompatActivity app;
+    public static String urlTxt;
+    public static String idTxt;
     public login(AppCompatActivity app) {
         this.app = app;
         app.setContentView(R.layout.pagelogin);
@@ -53,4 +56,27 @@ public class login{
         }
     }
 
+    public static String getUrlTxt() {
+        return urlTxt;
+    }
+
+    public void setUrlTxt(String urlTxt) {
+        this.urlTxt = urlTxt;
+    }
+
+    public static String getIdTxt() {
+        return idTxt;
+    }
+
+    public void setIdTxt(String idTxt) {
+        this.idTxt = idTxt;
+    }
+
+    public static String getMdpTxt() {
+        return mdpTxt;
+    }
+
+    public void setMdpTxt(String mdpTxt) {
+        this.mdpTxt = mdpTxt;
+    }
 }

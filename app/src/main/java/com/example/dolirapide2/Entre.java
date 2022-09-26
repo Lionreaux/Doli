@@ -16,7 +16,7 @@ public class Entre {
         btLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new login(app);
+                new Login(app);
             }
         });
         Button btConsult = app.findViewById(R.id.buttonCons);

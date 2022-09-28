@@ -8,15 +8,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 
 public class Login {
-    String urlTxt;
+    String ipTxt;
     String idTxt;
     String mdpTxt;
 
-    private AppCompatActivity app;
-    public Login(AppCompatActivity app) {
+    private MainActivity app;
+    public Login(MainActivity app) {
         this.app = app;
+        List l = app.getPages();
         app.setContentView(R.layout.pagelogin);
 
 
@@ -25,6 +28,8 @@ public class Login {
             @Override
             public void onClick(View view) {
                 new Entre(app);
+                List pages = app.getPages();
+                pages.add("1");
             }
         });
         Button btConn = app.findViewById(R.id.buttonConnect);
@@ -39,7 +44,7 @@ public class Login {
     }
     public void check() {
         EditText url = app.findViewById(R.id.ChampUrl);
-        urlTxt = url.getText().toString();
+        ipTxt = url.getText().toString();
 
         EditText id = app.findViewById(R.id.ChampId);
         idTxt = id.getText().toString();
@@ -48,20 +53,23 @@ public class Login {
         mdpTxt = mdp.getText().toString();
 
         TextView status = app.findViewById(R.id.essaie);
-        if (urlTxt.equals("oui") && idTxt.equals("admin") && mdpTxt.equals("123456789")) {
+        if (ipTxt.equals(ipTxt) && idTxt.equals("admin") && mdpTxt.equals("123456789")) {
             status.setText("Succès");
+            List pages = app.getPages();
+            pages.add("1");
+            new Entre(app);
         }
         else {
             status.setText("Erreur : identifiant non valide");
         }
     }
 
-    public String getUrlTxt() {
-        return urlTxt;
+    public String getIpTxt() {
+        return ipTxt;
     }
 
-    public void setUrlTxt(String urlTxt) {
-        this.urlTxt = urlTxt;
+    public void setIpTxt(String ipTxt) {
+        this.ipTxt = ipTxt;
     }
 
     public String getIdTxt() {

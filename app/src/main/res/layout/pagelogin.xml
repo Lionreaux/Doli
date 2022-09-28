@@ -24,9 +24,10 @@
         android:layout_marginStart="88dp"
         android:layout_marginBottom="260dp"
         android:background="@android:color/darker_gray"
-        android:text="123456789"
         android:ems="10"
         android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:text="123456789"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -37,9 +38,10 @@
         android:layout_marginStart="88dp"
         android:layout_marginBottom="316dp"
         android:background="@android:color/darker_gray"
-        android:text="admin"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:text="admin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -49,8 +51,9 @@
         android:layout_height="99dp"
         android:layout_marginStart="112dp"
         android:layout_marginBottom="100dp"
-        android:text="Se connecter"
         android:backgroundTint="@android:color/holo_green_light"
+        android:text="Se connecter"
+        android:textColor="#0D47A1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -75,7 +78,8 @@
         android:background="@android:color/darker_gray"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="oui"
+        android:minHeight="48dp"
+        android:text="192.168.1.32"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -5,10 +5,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Entre {
-    private AppCompatActivity app;
+import java.util.List;
 
-    public Entre(AppCompatActivity app) {
+public class Entre {
+    private MainActivity app;
+
+    public Entre(MainActivity app) {
         this.app = app;
         app.setContentView(R.layout.activity_main);
 
@@ -17,6 +19,8 @@ public class Entre {
             @Override
             public void onClick(View v) {
                 new Login(app);
+                List pages = app.getPages();
+                pages.add("0");
             }
         });
         Button btConsult = app.findViewById(R.id.buttonCons);
@@ -24,6 +28,8 @@ public class Entre {
             @Override
             public void onClick(View view) {
                 new consultation(app);
+                List pages = app.getPages();
+                pages.add("0");
             }
         });
 

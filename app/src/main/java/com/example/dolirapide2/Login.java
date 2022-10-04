@@ -22,16 +22,6 @@ public class Login {
         List l = app.getPages();
         app.setContentView(R.layout.pagelogin);
 
-
-        Button btRetour = app.findViewById(R.id.buttonRetour);
-        btRetour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new Entre(app);
-                List pages = app.getPages();
-                pages.add("1");
-            }
-        });
         Button btConn = app.findViewById(R.id.buttonConnect);
         btConn.setOnClickListener(new View.OnClickListener() {
             @Override

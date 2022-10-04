@@ -15,11 +15,13 @@ import java.util.List;
 public class Api extends Thread {
 
     private Login log;
-    HttpURLConnection urlConnection = null;
-    Object token = null;
+    String token = null;
+
+    MainActivity app;
 
     public Api(Login log) {
         this.log= log;
+        app = log.getApp();
     }
 
     @Override
@@ -39,7 +41,9 @@ public class Api extends Thread {
         String id = log.getIdTxt();
         String ip = log.getIpTxt();
         System.out.println(id);
-
+        System.out.println(mdp);
+        System.out.println(ip);
+        HttpURLConnection urlConnection = null;
 
 
         try {
@@ -69,9 +73,10 @@ public class Api extends Thread {
             try {
                 JSONObject jsonToken = new JSONObject(contenu);
                 jsonToken = (JSONObject) jsonToken.getJSONObject("success");
-                token = jsonToken.get("token");
+                token = jsonToken.getString("token");
                 System.out.println(jsonToken);
                 System.out.println(token);
+                app.setToken(token);
 
 
             } catch (JSONException err) {
@@ -80,49 +85,17 @@ public class Api extends Thread {
         } finally {
             urlConnection.disconnect();
         }
-
-        try {
-            URL url = new URL("http://"+ip+"/dolibarr/api/index.php/expensereports\n");
-            urlConnection = (HttpURLConnection) url.openConnection();
-
-            System.out.println("Début Thread : ");
-
-            //paramètres de connexions
-            urlConnection.setRequestMethod("POST");
-            urlConnection.setConnectTimeout(5000);
-            urlConnection.setConnectTimeout(5000);
-            urlConnection.setDoOutput(true);
-
-
-
-            urlConnection.setRequestProperty("DOLAPIKEY", (String) token);
-            urlConnection.setRequestProperty("Content-Type", "application/json");
-            urlConnection.setRequestProperty("Accept", "application/json");
-
-            try (OutputStream hein = urlConnection.getOutputStream()) {
-                byte[] input = "{ \"fk_user_author\":\"1\", \"date_debut\":1663999400, \"date_fin\":1663599900 }".getBytes("utf-8");
-                hein.write(input, 0, input.length);
-            }
-
-            BufferedReader repReq = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-
-            String contenuReq = "", ligneReq;
-            ligneReq = repReq.readLine();
-            while (ligneReq!=null) { // lecture ligne par ligne
-                contenuReq += ligneReq + "\n";
-                ligneReq = repReq.readLine();
-            }
-            System.out.println(contenuReq);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-        urlConnection.disconnect();
-        }
+        
 
     }
 
 
 
+    public Object getToken() {
+        return token;
+    }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

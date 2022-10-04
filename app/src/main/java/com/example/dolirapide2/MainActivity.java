@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
     private String dernierElement;
     private int taille;
 
+    private String ip;
+    private String token;
+    private String idNote;
+
     public MainActivity() {
         pages = new ArrayList();
     }
@@ -22,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Entre(this);
+        new Login(this);
+        //new Entre(this);
         pages.add("0");
     }
 
@@ -49,5 +54,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void setPages(List pages) {
         this.pages = pages;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getIdNote() {
+        return idNote;
+    }
+
+    public void setIdNote(String idNote) {
+        this.idNote = idNote;
     }
 }

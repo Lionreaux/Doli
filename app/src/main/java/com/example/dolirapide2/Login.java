@@ -57,6 +57,7 @@ public class Login {
             status.setText("Succès");
             List pages = app.getPages();
             pages.add("1");
+            app.setIp(ipTxt);
             new Entre(app);
         }
         else {
@@ -86,5 +87,9 @@ public class Login {
 
     public void setMdpTxt(String mdpTxt) {
         this.mdpTxt = mdpTxt;
+    }
+
+    public MainActivity getApp() {
+        return app;
     }
 }

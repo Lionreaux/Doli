@@ -3,8 +3,6 @@ package com.example.dolirapide2;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.List;
 
 public class consultation {
@@ -28,7 +26,7 @@ public class consultation {
 
             {
                 public void onClick(View v) {
-                new creation(app);
+                    new Creation(app);
                 List pages = app.getPages();
                 pages.add("2");
                 }

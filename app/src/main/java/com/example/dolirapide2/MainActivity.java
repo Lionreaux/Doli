@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private String ip;
     private String token;
     private String idNote;
+    private String idU;
 
     public MainActivity() {
         pages = new ArrayList();
@@ -78,5 +79,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void setIdNote(String idNote) {
         this.idNote = idNote;
+    }
+
+    public String getIdU() {
+        return idU;
+    }
+
+    public void setIdU(String idU) {
+        this.idU = idU;
     }
 }

@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
 
 public class CreationNote extends Thread{
     private MainActivity app;
@@ -18,6 +19,7 @@ public class CreationNote extends Thread{
     String idNote;
     String montant;
     String notePu;
+    private String idU;
 
     public CreationNote(MainActivity app){
         this.app = app;
@@ -35,6 +37,9 @@ public class CreationNote extends Thread{
     public void Creation() {
         String ip = app.getIp();
         System.out.println(ip);
+
+        idU = app.getIdU();
+
         HttpURLConnection urlConnection = null;
 
         Object token = app.getToken();
@@ -58,7 +63,7 @@ public class CreationNote extends Thread{
 
 
             try (OutputStream hein = urlConnection.getOutputStream()) {
-                byte[] input = "{ \"fk_user_author\":\"1\", \"date_debut\":1663999400, \"date_fin\":1663599900 }".getBytes("utf-8");
+                byte[] input = ("{ \"fk_user_author\":\""+idU+"\", \"date_debut\":1663999400, \"date_fin\":1663599900 }").getBytes("utf-8");
                 hein.write(input, 0, input.length);
             }
 
@@ -87,6 +92,10 @@ public class CreationNote extends Thread{
 
         EditText noteE = app.findViewById(R.id.note);
         notePu = noteE.getText().toString();
+
+        LocalDateTime DateMtn = LocalDateTime.now();
+
+        LocalDateTime DateButoir ;
 
 
 

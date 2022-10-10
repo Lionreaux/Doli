@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 public class CreationNote extends Thread{
@@ -15,6 +17,10 @@ public class CreationNote extends Thread{
 
     private String ip;
     private Object token;
+    private long dateAuj;
+    private String dateButStr;
+    private Timestamp dateBut;
+    private  String dateButoir;
 
     String idNote;
     String montant;
@@ -36,11 +42,12 @@ public class CreationNote extends Thread{
 
     public void Creation() {
         String ip = app.getIp();
-        System.out.println(ip);
+        //System.out.println(ip);
 
         idU = app.getIdU();
 
         HttpURLConnection urlConnection = null;
+        Date();
 
         Object token = app.getToken();
         try {
@@ -63,7 +70,7 @@ public class CreationNote extends Thread{
 
 
             try (OutputStream hein = urlConnection.getOutputStream()) {
-                byte[] input = ("{ \"fk_user_author\":\""+idU+"\", \"date_debut\":1663999400, \"date_fin\":1663599900 }").getBytes("utf-8");
+                byte[] input = ("{ \"fk_user_author\":\""+idU+"\", \"date_debut\":"+dateAuj+", \"date_fin\":"+dateButoir+" }").getBytes("utf-8");
                 hein.write(input, 0, input.length);
             }
 
@@ -93,9 +100,6 @@ public class CreationNote extends Thread{
         EditText noteE = app.findViewById(R.id.note);
         notePu = noteE.getText().toString();
 
-        LocalDateTime DateMtn = LocalDateTime.now();
-
-        LocalDateTime DateButoir ;
 
 
 
@@ -140,6 +144,15 @@ public class CreationNote extends Thread{
         finally {
             urlConnection.disconnect();
         }
+    }
+    public void Date() {
+        dateAuj = Instant.now().getEpochSecond();
+
+        EditText dateBu = app.findViewById(R.id.dateBut);
+        dateButStr = dateBu.getText().toString().replace("/", "-") + " 00:00:01";
+        dateBut = Timestamp.valueOf(dateButStr);
+        dateButoir = String.valueOf(dateBut.getTime()/1000);
+
     }
 
     public String getIdNote() {

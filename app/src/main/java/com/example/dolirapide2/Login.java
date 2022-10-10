@@ -43,7 +43,7 @@ public class Login {
         mdpTxt = mdp.getText().toString();
 
         TextView status = app.findViewById(R.id.essaie);
-        if (idTxt.equals("lion") && mdpTxt.equals("123456789azerty")) {
+        if (idTxt.equals("admin") && mdpTxt.equals("123456789")) {
             status.setText("Succès");
             List pages = app.getPages();
             pages.add("1");

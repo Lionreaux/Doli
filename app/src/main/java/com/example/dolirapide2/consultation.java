@@ -21,16 +21,23 @@ public class consultation {
             }
         });
 
-            Button btCreer = app.findViewById(R.id.buttoncrea);
+        Button btCreer = app.findViewById(R.id.buttoncrea);
         btCreer.setOnClickListener(new View.OnClickListener()
 
             {
                 public void onClick(View v) {
-                    new Creation(app);
+                new Creation(app);
                 List pages = app.getPages();
                 pages.add("2");
                 }
 
+        });
+        Button btImage = app.findViewById(R.id.boutonImage);
+        btImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 app.openFileChooser();
+            }
         });
     }
 }

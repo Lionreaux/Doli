@@ -20,8 +20,8 @@
         android:id="@+id/buttonCrea"
         android:layout_width="153dp"
         android:layout_height="70dp"
-        android:layout_marginStart="129dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginBottom="72dp"
         android:text="Création"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -56,8 +56,8 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="433dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="436dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -72,6 +72,30 @@
         android:hint="Date Butoir : AAAA/MM/JJ"
         android:inputType="date"
         android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/intentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="326dp"
+        android:layout_marginTop="646dp"
+        android:contentDescription="Add une image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/addimage" />
+
+    <EditText
+        android:id="@+id/nomImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="475dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="Nom de l'image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

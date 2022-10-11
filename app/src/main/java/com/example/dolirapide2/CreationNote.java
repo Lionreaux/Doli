@@ -1,11 +1,17 @@
 package com.example.dolirapide2;
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+
+import android.content.Intent;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -21,6 +27,8 @@ public class CreationNote extends Thread{
     private String dateButStr;
     private Timestamp dateBut;
     private  String dateButoir;
+    private String imageContenu;
+    private String nomImage;
 
     String idNote;
     String montant;
@@ -37,6 +45,7 @@ public class CreationNote extends Thread{
         super.run();
         Creation();
         modifNote();
+        EnvoiImage();
     }
 
 
@@ -104,6 +113,7 @@ public class CreationNote extends Thread{
 
 
         idNote = app.getIdNote();
+        idNote = idNote.replace("\n", "");
         HttpURLConnection urlConnection = null;
         Object token = app.getToken();
         try {
@@ -154,6 +164,47 @@ public class CreationNote extends Thread{
         dateButoir = String.valueOf(dateBut.getTime()/1000);
 
     }
+    public void EnvoiImage(){
+        EditText nomIm = app.findViewById(R.id.nomImage);
+        nomImage = nomIm.getText().toString();
+
+
+        HttpURLConnection urlConnection = null;
+        Object token = app.getToken();
+
+        imageContenu = app.getImageContenu();
+        try {
+            URL url = new URL("http://10.0.52.185/dolibarr/api/index.php/documents/upload");
+            urlConnection = (HttpURLConnection) url.openConnection();
+
+            System.out.println("Début Thread : ");
+
+            //paramètres de connexions
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setConnectTimeout(5000);
+            urlConnection.setConnectTimeout(5000);
+            urlConnection.setDoOutput(true);
+
+
+
+            urlConnection.setRequestProperty("DOLAPIKEY", (String) token);
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Accept", "application/json");
+
+            try (OutputStream hein = urlConnection.getOutputStream()) {
+                byte[] input = ("{\"filename\": \""+nomImage+".png\", \"modulepart\": \"expensereport\", \"ref\": \"(PROV"+idNote+")\", \"subdir\": \"\", \"filecontent\": \""+imageContenu+"\", \"fileencoding\": \"base64\", \"overwriteifexists\": \"0\"}").getBytes("utf-8");
+                System.out.println("{\"filename\": \""+nomImage+".png\", \"modulepart\": \"expensereport\", \"ref\": \"(PROV"+idNote+")\", \"subdir\": \"\", \"filecontent\": \""+imageContenu+"\", \"fileencoding\": \"base64\", \"overwriteifexists\": \"0\"}");
+                hein.write(input, 0, input.length);
+            }
+            BufferedReader repReq = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     public String getIdNote() {
         return idNote;

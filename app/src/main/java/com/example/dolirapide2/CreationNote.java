@@ -28,6 +28,7 @@ public class CreationNote extends Thread{
     private Timestamp dateBut;
     private  String dateButoir;
     private String imageContenu;
+
     private String nomImage;
 
     String idNote;
@@ -45,11 +46,22 @@ public class CreationNote extends Thread{
         super.run();
         Creation();
         modifNote();
-        EnvoiImage();
+        System.out.println(imageContenu);
+        if (imageContenu != null) {EnvoiImage();}
+        app.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new consultation(app);
+            }
+        });
+
+
+
     }
 
 
     public void Creation() {
+        imageContenu = app.getImageContenu();
         String ip = app.getIp();
         //System.out.println(ip);
 
@@ -193,7 +205,6 @@ public class CreationNote extends Thread{
 
             try (OutputStream hein = urlConnection.getOutputStream()) {
                 byte[] input = ("{\"filename\": \""+nomImage+".png\", \"modulepart\": \"expensereport\", \"ref\": \"(PROV"+idNote+")\", \"subdir\": \"\", \"filecontent\": \""+imageContenu+"\", \"fileencoding\": \"base64\", \"overwriteifexists\": \"0\"}").getBytes("utf-8");
-                System.out.println("{\"filename\": \""+nomImage+".png\", \"modulepart\": \"expensereport\", \"ref\": \"(PROV"+idNote+")\", \"subdir\": \"\", \"filecontent\": \""+imageContenu+"\", \"fileencoding\": \"base64\", \"overwriteifexists\": \"0\"}");
                 hein.write(input, 0, input.length);
             }
             BufferedReader repReq = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -201,7 +212,9 @@ public class CreationNote extends Thread{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        finally {
+            urlConnection.disconnect();
+        }
 
     }
 

@@ -17,6 +17,14 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 
+/*
+Cette classe est celle qui comprends tout les traitements/requetes que je fait qui sont en rapport avec la création d'une note de frais.
+Elle fonctionne grace a un thread qui est différent de celui de l'affichage qui me permet d'éxécuter mes requetes.
+La méthode Création va créer une note de frais basique avec les champs obligatoire et ainsi en récupérer l'id.
+La méthode modifNote va elle modifier cette note de frais créée pour y rajouter un montant ttc et une note afin de décrire la nature de la note de frais.
+La méthode EnvoiImage va elle s'occuper d'aller ouvrir notre gallerie en appelant la méthode de mon activité et va ensuite l'envoyer via une requete document vers la note choisie.
+La méthode Date va elle me permettre de transformer mes dates du format "AAAA/MM/DD" vers un entier basé sur l'entier 0 = 1970/01/01 qui nous sera utile en paramètre.
+ */
 public class CreationNote extends Thread{
     private MainActivity app;
     private Api api;
@@ -46,7 +54,7 @@ public class CreationNote extends Thread{
         super.run();
         Creation();
         modifNote();
-        System.out.println(imageContenu);
+        //System.out.println(imageContenu);
         if (imageContenu != null) {EnvoiImage();}
         app.runOnUiThread(new Runnable() {
             @Override
@@ -106,6 +114,7 @@ public class CreationNote extends Thread{
             System.out.println(contenuReq);
             idNote=contenuReq;
             app.setIdNote(idNote);
+            //prendre l'id ici et le lié a ma page consultation pour qu'il en affiche les données correspondantes.
 
         } catch (Exception e) {
             e.printStackTrace();

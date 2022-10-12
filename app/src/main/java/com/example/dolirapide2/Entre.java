@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
+/*
+Cette classe va s'occuper de la vue de ma page d'acceuil après mon login et va gérer ce qu'il se passe lors d'un appui sur un de ses boutons.
+ */
 public class Entre {
     private MainActivity app;
 

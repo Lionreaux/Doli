@@ -15,6 +15,10 @@ import androidx.activity.result.contract.ActivityResultContracts;
 
 import java.util.List;
 
+/*
+Cette classe va s'occuper de la vue de ma page de création et va gérer ce qu'il se passe lors d'un appui sur un de ses boutons.
+
+ */
 public class Creation {
     private MainActivity app;
     private Login log;

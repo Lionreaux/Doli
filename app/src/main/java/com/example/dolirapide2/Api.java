@@ -52,6 +52,7 @@ public class Api extends Thread {
 
         try {
             URL url = new URL("http://"+ip+"/dolibarr/api/index.php/login?login="+id+"&password="+mdp);
+            System.out.println("http://"+ip+"/dolibarr/api/index.php/login?login="+id+"&password="+mdp);
             //URL url = new URL("http://10.0.51.243/dolibarr/api/index.php/login?login=admin&password=123456789");
             urlConnection = (HttpURLConnection) url.openConnection();
 

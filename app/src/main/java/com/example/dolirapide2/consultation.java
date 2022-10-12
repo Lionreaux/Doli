@@ -13,15 +13,10 @@ public class consultation {
         this.app = app;
         app.setContentView(R.layout.consultations);
 
-        Button btRetour = app.findViewById(R.id.buttonRetour);
-        btRetour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new Entre(app);
-                List pages = app.getPages();
-                pages.add("2");
-            }
-        });
+
+        ListeNote liste = new ListeNote(app);
+        liste.start();
+
 
         Button btCreer = app.findViewById(R.id.buttoncrea);
         btCreer.setOnClickListener(new View.OnClickListener()
@@ -34,12 +29,6 @@ public class consultation {
                 }
 
         });
-        Button btImage = app.findViewById(R.id.boutonImage);
-        btImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 app.openFileChooser();
-            }
-        });
+
     }
 }

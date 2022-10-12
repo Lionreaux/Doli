@@ -43,7 +43,6 @@ public class ListeNote extends Thread {
         HttpURLConnection urlConnection = null;
         try {
             URL url = new URL("http://"+ip+"/dolibarr/api/index.php/expensereports?sortfield=t.rowid&sortorder=DESC&limit=5&user_ids="+id+"&DOLAPIKEY="+token+"");
-            System.out.println("http://"+ip+"/dolibarr/api/index.php/expensereports?sortfield=t.rowid&sortorder=DESC&limit=5&user_ids="+id+"&DOLAPIKEY="+token+"");
             //URL url = new URL("http://10.0.51.243/dolibarr/api/index.php/login?login=admin&password=123456789");
             urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -64,10 +63,12 @@ public class ListeNote extends Thread {
             }
 
             System.out.println(contenu);
-            EditText[] listeR = {app.findViewById(R.id.Note1), app.findViewById(R.id.Note2), app.findViewById(R.id.Note3), app.findViewById(R.id.Note4), app.findViewById(R.id.Note5)};
+            EditText[] listeR = {app.findViewById(R.id.Note1),app.findViewById(R.id.note2),app.findViewById(R.id.note3), app.findViewById(R.id.Note2), app.findViewById(R.id.Note3), app.findViewById(R.id.Note4), app.findViewById(R.id.Note5)};
 
             for (int i = 0; i<5; i++) {
                 try {
+                    if (note == null){note="Aucune description";}
+
                     contenu = contenu.replace("\n","");
                     JSONArray jsonToken = new JSONArray(contenu);
                     JSONObject jsonObject = jsonToken.getJSONObject(i);
@@ -78,11 +79,14 @@ public class ListeNote extends Thread {
                     System.out.println("Description de la note : "+note);
                     System.out.println("Prix ttc de la note : "+prix+"€");
                     String recap = ("Id de la note : "+idDeNote+" | Description de la note : "+note+" | Prix ttc de la note : "+prix+"€");
-                    app.setToken(idDeNote);
+
 
 
                     EditText champ = listeR[i];
-                    champ.setText(recap);
+                    //champ.setText(recap);
+                    champ.setText(idDeNote);
+                    champ.setText(note);
+                    champ.setText(prix);
                     System.out.println(champ);
 
 

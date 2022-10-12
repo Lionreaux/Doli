@@ -48,6 +48,8 @@ public class CreationNote extends Thread{
         this.app = app;
         ip = app.getIp();
         token = app.getToken();
+
+
     }
     @Override
     public void run() {
@@ -79,6 +81,7 @@ public class CreationNote extends Thread{
         Date();
 
         Object token = app.getToken();
+        //System.out.println(token);
         try {
             URL url = new URL("http://"+ip+"/dolibarr/api/index.php/expensereports\n");
             urlConnection = (HttpURLConnection) url.openConnection();

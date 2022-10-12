@@ -70,6 +70,7 @@
         android:layout_marginTop="240dp"
         android:ems="10"
         android:hint="Date Butoir : AAAA/MM/JJ"
+        android:text="2022/10/25"
         android:inputType="date"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"

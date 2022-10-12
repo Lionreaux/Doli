@@ -28,10 +28,34 @@
 
     <EditText
         android:id="@+id/Note1"
-        android:layout_width="375dp"
-        android:layout_height="48dp"
+        android:layout_width="31dp"
+        android:layout_height="46dp"
         android:layout_marginStart="13dp"
         android:layout_marginTop="142dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/note2"
+        android:layout_width="203dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="140dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/note3"
+        android:layout_width="129dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="140dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
@@ -85,5 +109,32 @@
         android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Id Note"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prix"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="336dp"
+        tools:layout_editor_absoluteY="102dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@ public class ListeNote extends Thread {
     private String id;
     private String prix;
     private String note;
+    private Integer j = 0;
 
 
 
@@ -63,15 +64,15 @@ public class ListeNote extends Thread {
             }
 
             System.out.println(contenu);
-            EditText[] listeR = {app.findViewById(R.id.Note1),app.findViewById(R.id.note2),app.findViewById(R.id.note3), app.findViewById(R.id.Note2), app.findViewById(R.id.Note3), app.findViewById(R.id.Note4), app.findViewById(R.id.Note5)};
+            EditText[] listeR = {app.findViewById(R.id.note1),app.findViewById(R.id.note2),app.findViewById(R.id.note3), app.findViewById(R.id.note4), app.findViewById(R.id.note5), app.findViewById(R.id.note6), app.findViewById(R.id.note7), app.findViewById(R.id.note8), app.findViewById(R.id.note9), app.findViewById(R.id.note10), app.findViewById(R.id.note11), app.findViewById(R.id.note12), app.findViewById(R.id.note13), app.findViewById(R.id.note14), app.findViewById(R.id.note15)};
 
-            for (int i = 0; i<5; i++) {
+            for (int i = 0; i<15; i=i+3) {
                 try {
                     if (note == null){note="Aucune description";}
 
                     contenu = contenu.replace("\n","");
                     JSONArray jsonToken = new JSONArray(contenu);
-                    JSONObject jsonObject = jsonToken.getJSONObject(i);
+                    JSONObject jsonObject = jsonToken.getJSONObject(j);
                     idDeNote = jsonObject.getString("id");
                     note = jsonObject.getString("note_public");
                     prix = jsonObject.getString("total_ttc");
@@ -80,14 +81,17 @@ public class ListeNote extends Thread {
                     System.out.println("Prix ttc de la note : "+prix+"€");
                     String recap = ("Id de la note : "+idDeNote+" | Description de la note : "+note+" | Prix ttc de la note : "+prix+"€");
 
+                    prix = prix + ":";
+                    EditText champ;
 
-
-                    EditText champ = listeR[i];
-                    //champ.setText(recap);
+                    champ = listeR[i];
                     champ.setText(idDeNote);
+                    champ = listeR[i+1];
                     champ.setText(note);
-                    champ.setText(prix);
+                    champ = listeR[i+2];
+                    champ.setText(prix.replace("000000:","€"));
                     System.out.println(champ);
+                    j=j+1;
 
 
                 } catch (Exception err) {

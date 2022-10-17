@@ -12,7 +12,7 @@
         android:layout_height="203dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="51dp"
-        android:text="OEOE LA DEUXIEME PAGE "
+        android:text="Page de connexion"
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -11,7 +11,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
-/*
+/**
 Cette classe va réaliser tout les traitements et requetes concernant l'a récupération du token / la connexion de l'utilisateur.
 Elle fonctionne grace a un thread qui est différent de celui de l'affichage qui me permet d'éxécuter mes requetes.
  */

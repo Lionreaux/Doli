@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 
-/*
+/**
 Cette classe est celle qui comprends tout les traitements/requetes que je fait qui sont en rapport avec la création d'une note de frais.
 Elle fonctionne grace a un thread qui est différent de celui de l'affichage qui me permet d'éxécuter mes requetes.
 La méthode Création va créer une note de frais basique avec les champs obligatoire et ainsi en récupérer l'id.

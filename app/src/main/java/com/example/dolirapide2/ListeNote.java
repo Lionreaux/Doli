@@ -12,6 +12,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+Cette classe est celle qui comprends tout les traitements/requetes que je fait qui sont en rapport avec la liste des notes de frais.
+Elle fonctionne grace a un thread qui est différent de celui de l'affichage qui me permet d'éxécuter mes requetes.
+La méthode Liste va lister mes notes de frais en notant les parametres de ma note de frais.
+ */
+
 public class ListeNote extends Thread {
 
     private MainActivity app;

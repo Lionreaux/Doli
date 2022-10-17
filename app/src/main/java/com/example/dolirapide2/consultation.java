@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.List;
-/*
+/**
 Cette classe va s'occuper de la vue de ma page de consultation et va gérer ce qu'il se passe lors d'un appui sur un de ses boutons.
  */
 public class consultation {

@@ -9,7 +9,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
-
+/**
+Cette classe va s'occuper de la vue de ma page de création et va gérer ce qu'il se passe lors d'un appui sur un de ses boutons.
+La méthode check est écrite en dur mais a terme vérifira si les logins sont les bons, et permettra d'afficher dans l'appli sous quel compte on se trouve.
+ */
 
 public class Login {
     String ipTxt;

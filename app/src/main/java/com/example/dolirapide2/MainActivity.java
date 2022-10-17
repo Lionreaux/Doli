@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import android.util.Base64;
 import java.util.List;
-/*
+/**
 Cette classe est le commencement du programme c'est ici qu'il va créer mon unique activité que je vais ensuite envoyer et utiliser avec toutes mes classes.
 On y a aussi le système que j'utilise pour avoir un retour en arriere quand on appuie sur la fleche du bas du téléphone que je fait marcher avec un tableau étant donné que je n'ai qu'une seule activité, ce qui n'est pas optimale pour du développement java android.
 On peut aussi trouver ligne 74 et 82 les méthodes qui servent a ouvrir la gallerie du téléphonne et a encoder en base 64 notre image pour que l'on puisse l'envoyer dans une note de frais.

@@ -9,6 +9,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+classe qui se charge de prendre l'id de l'utilisateur et ses autres informations.
+ */
 public class UserId {
     private Login log;
     String token = null;

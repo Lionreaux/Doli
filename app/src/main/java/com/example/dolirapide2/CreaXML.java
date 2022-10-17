@@ -16,6 +16,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+//classe qui avais pour but de créer un xml pour chaque note de frais.
+
 public class CreaXML {
     public CreaXML(MainActivity app) throws Exception {
 

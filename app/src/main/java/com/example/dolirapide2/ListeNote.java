@@ -23,9 +23,9 @@ La méthode Liste va lister mes notes de frais en notant les parametres de ma no
 
 public class ListeNote extends Thread {
 
-    private MainActivity app;
-    private String ip;
-    private String token;
+        private MainActivity app;
+        private String ip;
+        private String token;
     private String idNote;
     private String idDeNote;
     private String id;
@@ -53,7 +53,6 @@ public class ListeNote extends Thread {
         HttpURLConnection urlConnection = null;
         try {
             URL url = new URL("http://"+ip+"/dolibarr/api/index.php/expensereports?sortfield=t.rowid&sortorder=DESC&limit=5&user_ids="+id+"&DOLAPIKEY="+token+"");
-            //URL url = new URL("http://10.0.51.243/dolibarr/api/index.php/login?login=admin&password=123456789");
             urlConnection = (HttpURLConnection) url.openConnection();
 
             System.out.println("Début Thread : ");
@@ -112,39 +111,6 @@ public class ListeNote extends Thread {
         }
     }
 
-    public void telechargerPdf(View view) {
-        String urlPdf = "http://" + ip + "/dolibarr/expensereport.php?action=pdf&id=" + idDeNote + "&DOLAPIKEY=" + token;
 
-        try {
-            URL url = new URL(urlPdf);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-
-            urlConnection.setRequestMethod("GET");
-            urlConnection.connect();
-
-            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String fileName = "note_" + idDeNote + ".pdf";
-                InputStream inputStream = urlConnection.getInputStream();
-                FileOutputStream outputStream = app.openFileOutput(fileName, Context.MODE_PRIVATE);
-
-                byte[] buffer = new byte[1024];
-                int len = inputStream.read(buffer);
-
-                while (len != -1) {
-                    outputStream.write(buffer, 0, len);
-                    len = inputStream.read(buffer);
-                }
-
-                outputStream.close();
-                inputStream.close();
-
-                System.out.println("Le fichier PDF a été téléchargé avec succès !");
-            } else {
-                System.out.println("Erreur lors de la connexion : " + urlConnection.getResponseCode() + " " + urlConnection.getResponseMessage());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }

@@ -249,12 +249,11 @@
         tools:layout_editor_absoluteY="102dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonPDF1"
         android:layout_width="53dp"
         android:layout_height="48dp"
         android:layout_marginStart="227dp"
         android:layout_marginTop="141dp"
-        android:onClick="telechargerPdf"
         android:text="PDF"
         android:textSize="7dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -262,12 +261,11 @@
         tools:ignore="MissingConstraints,TextSizeCheck" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonPDF2"
         android:layout_width="53dp"
         android:layout_height="48dp"
         android:layout_marginStart="227dp"
         android:layout_marginTop="205dp"
-        android:onClick="telechargerPdf"
         android:text="PDF"
         android:textSize="7dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -275,12 +273,11 @@
         tools:ignore="MissingConstraints,TextSizeCheck" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonPDF3"
         android:layout_width="53dp"
         android:layout_height="48dp"
         android:layout_marginStart="227dp"
         android:layout_marginTop="269dp"
-        android:onClick="telechargerPdf"
         android:text="PDF"
         android:textSize="7dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -288,12 +285,11 @@
         tools:ignore="MissingConstraints,TextSizeCheck" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/buttonPDF5"
         android:layout_width="53dp"
         android:layout_height="48dp"
         android:layout_marginStart="227dp"
         android:layout_marginTop="392dp"
-        android:onClick="telechargerPdf"
         android:text="PDF"
         android:textSize="7dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -301,12 +297,11 @@
         tools:ignore="MissingConstraints,TextSizeCheck" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/buttonPDF4"
         android:layout_width="53dp"
         android:layout_height="48dp"
         android:layout_marginStart="227dp"
         android:layout_marginTop="332dp"
-        android:onClick="telechargerPdf"
         android:text="PDF"
         android:textSize="7dp"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,5 +1,6 @@
 package com.example.dolirapide2;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 
@@ -8,6 +9,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -108,4 +111,40 @@ public class ListeNote extends Thread {
             e.printStackTrace();
         }
     }
+
+    public void telechargerPdf(View view) {
+        String urlPdf = "http://" + ip + "/dolibarr/expensereport.php?action=pdf&id=" + idDeNote + "&DOLAPIKEY=" + token;
+
+        try {
+            URL url = new URL(urlPdf);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                String fileName = "note_" + idDeNote + ".pdf";
+                InputStream inputStream = urlConnection.getInputStream();
+                FileOutputStream outputStream = app.openFileOutput(fileName, Context.MODE_PRIVATE);
+
+                byte[] buffer = new byte[1024];
+                int len = inputStream.read(buffer);
+
+                while (len != -1) {
+                    outputStream.write(buffer, 0, len);
+                    len = inputStream.read(buffer);
+                }
+
+                outputStream.close();
+                inputStream.close();
+
+                System.out.println("Le fichier PDF a été téléchargé avec succès !");
+            } else {
+                System.out.println("Erreur lors de la connexion : " + urlConnection.getResponseCode() + " " + urlConnection.getResponseMessage());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

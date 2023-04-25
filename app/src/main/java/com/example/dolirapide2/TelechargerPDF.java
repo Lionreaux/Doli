@@ -7,6 +7,9 @@ import android.os.AsyncTask;
 
 import androidx.core.content.FileProvider;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -22,6 +26,8 @@ public class TelechargerPDF extends AsyncTask<String, Void, File> {
     private MainActivity app;
     private String ip;
     private String token;
+
+    private String contenu;
 
     public TelechargerPDF(MainActivity app) {
         this.app = app;
@@ -48,10 +54,21 @@ public class TelechargerPDF extends AsyncTask<String, Void, File> {
             }
 
             byte[] pdfData = outputStream.toByteArray();
-            System.out.println(Arrays.toString(pdfData));
+            String json = new String(pdfData, StandardCharsets.UTF_8);
+            System.out.println(json);
+
+            JSONObject jsonObj = new JSONObject(json);
+            System.out.println(jsonObj);
+            contenu = jsonObj.getString("content");
+            System.out.println(contenu);
+
+            byte[] contentBytes = Base64.getDecoder().decode(contenu);
+
+
+
+/**
             // Convertir le contenu en base64 en bytes
             byte[] decodedPdfData = Base64.getDecoder().decode(pdfData);
-            System.out.println(decodedPdfData);
 
             File cacheDir = app.getCacheDir();
             System.out.println(cacheDir);
@@ -64,14 +81,16 @@ public class TelechargerPDF extends AsyncTask<String, Void, File> {
             outputStream2.write(decodedPdfData);
             outputStream2.close();
 
-            return pdfFile;
+            return pdfFile;*/
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
 
-
+/**
     @Override
     protected void onPostExecute(File pdfFile) {
         if (pdfFile != null) {
@@ -90,5 +109,5 @@ public class TelechargerPDF extends AsyncTask<String, Void, File> {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 }

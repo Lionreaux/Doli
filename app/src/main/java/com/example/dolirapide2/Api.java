@@ -77,6 +77,7 @@ public class Api extends Thread {
 
             try {
                 JSONObject jsonToken = new JSONObject(contenu);
+                System.out.println(jsonToken);
                 jsonToken = (JSONObject) jsonToken.getJSONObject("success");
                 token = jsonToken.getString("token");
                 System.out.println(jsonToken);

@@ -56,20 +56,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        taille = pages.size() - 1;
-        dernierElement = (String) pages.get(taille);
-        if (dernierElement.equals("0")) {
-            new Entre(this);
+        taille = pages.size();
+        if(taille > 0){
+            dernierElement = (String) pages.get(taille-1);
+            if (dernierElement.equals("0")) {
+                new Entre(this);
+            } else if (dernierElement.equals("1")) {
+                new Entre(this);
+            } else if (dernierElement.equals("2")){
+                new consultation(this);
+            }
+            pages.remove(taille-1);
         }
-        else if (dernierElement.equals("1")) {
-            new Entre(this);
-        }
-        else if (dernierElement.equals("2")){
-            new consultation(this);
-        }
-        pages.remove(taille);
         return true;
     }
+
 
     public void openFileChooser() {
         Intent intent = new Intent();

@@ -33,12 +33,67 @@ public class consultation {
 
         });
 
-        Button btTelecharger = app.findViewById(R.id.buttonPDF1);
-        btTelecharger.setOnClickListener(new View.OnClickListener() {
+        Button btTelecharger1 = app.findViewById(R.id.buttonPDF1);
+        btTelecharger1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 EditText note1 = app.findViewById(R.id.note1);
-                String idNote = note1.getText().toString();// Remplacez "1" par l'ID de la note que vous voulez télécharger
+                String idNote = note1.getText().toString();
+                //CreatePDF createPDF = new CreatePDF();
+                //CreatePDF.main(null);
+                TelechargerPDF telechargerPDF = new TelechargerPDF(app);
+                telechargerPDF.execute(idNote);
+
+            }
+        });
+        Button btTelecharger2 = app.findViewById(R.id.buttonPDF2);
+        btTelecharger2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                EditText note1 = app.findViewById(R.id.note4);
+                String idNote = note1.getText().toString();
+                //CreatePDF createPDF = new CreatePDF();
+                //CreatePDF.main(null);
+                TelechargerPDF telechargerPDF = new TelechargerPDF(app);
+                telechargerPDF.execute(idNote);
+
+            }
+        });
+
+        Button btTelecharger3 = app.findViewById(R.id.buttonPDF3);
+        btTelecharger3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                EditText note1 = app.findViewById(R.id.note7);
+                String idNote = note1.getText().toString();
+                //CreatePDF createPDF = new CreatePDF();
+                //CreatePDF.main(null);
+                TelechargerPDF telechargerPDF = new TelechargerPDF(app);
+                telechargerPDF.execute(idNote);
+
+            }
+        });
+        Button btTelecharger4 = app.findViewById(R.id.buttonPDF4);
+        btTelecharger4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                EditText note1 = app.findViewById(R.id.note10);
+                String idNote = note1.getText().toString();
+                //CreatePDF createPDF = new CreatePDF();
+                //CreatePDF.main(null);
+                TelechargerPDF telechargerPDF = new TelechargerPDF(app);
+                telechargerPDF.execute(idNote);
+
+            }
+        });
+        Button btTelecharger5 = app.findViewById(R.id.buttonPDF5);
+        btTelecharger5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                EditText note1 = app.findViewById(R.id.note13);
+                String idNote = note1.getText().toString();
+                //CreatePDF createPDF = new CreatePDF();
+                //CreatePDF.main(null);
                 TelechargerPDF telechargerPDF = new TelechargerPDF(app);
                 telechargerPDF.execute(idNote);
 

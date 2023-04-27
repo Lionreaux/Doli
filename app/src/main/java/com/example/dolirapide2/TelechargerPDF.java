@@ -4,8 +4,15 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 
 import androidx.core.content.FileProvider;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfImportedPage;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +25,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -64,7 +73,27 @@ public class TelechargerPDF extends AsyncTask<String, Void, File> {
 
             byte[] contentBytes = Base64.getDecoder().decode(contenu);
 
+            File downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
+            System.out.println(downloadDir);
+
+            String nomFichier = "/Note"+idNote+".pdf";
+
+            // Créez un nouveau document PDF
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.getInstance(document, Files.newOutputStream(Paths.get(downloadDir+nomFichier)));
+            document.open();
+
+            // Ajoutez le contenu du fichier PDF décodé au nouveau document PDF
+            PdfReader reader = new PdfReader(contentBytes);
+            for (int i = 1; i <= reader.getNumberOfPages(); i++) {
+                PdfImportedPage page = writer.getImportedPage(reader, i);
+                writer.getDirectContent().addTemplate(page, 0, 0);
+            }
+
+            // Fermez le nouveau document PDF et le lecteur PDF
+            document.close();
+            reader.close();
 
 /**
             // Convertir le contenu en base64 en bytes
@@ -86,28 +115,12 @@ public class TelechargerPDF extends AsyncTask<String, Void, File> {
             e.printStackTrace();
         } catch (JSONException e) {
             throw new RuntimeException(e);
+        } catch (DocumentException e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
 
-/**
-    @Override
-    protected void onPostExecute(File pdfFile) {
-        if (pdfFile != null) {
-            // Ouvrir le fichier temporaire avec l'application de visualisation de PDF de l'utilisateur
-            Uri pdfUri = FileProvider.getUriForFile(app, app.getPackageName() + ".provider", pdfFile);
-            Intent target = new Intent(Intent.ACTION_VIEW);
-            target.setDataAndType(pdfUri, "application/pdf");
-            target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            target.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-            Intent intent = Intent.createChooser(target, "Ouvrir le PDF avec :");
-            try {
-                app.startActivity(intent);
-            } catch (ActivityNotFoundException e) {
-                // Si aucune application de visualisation de PDF n'est installée, afficher un message d'erreur
-                e.printStackTrace();
-            }
-        }
-    }*/
+
 }
